@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédiction UFC</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Prédiction UFC - Entrez les valeurs :</h2>
+        <form action="/predict" method="post">
+            <div class="form-row">
+                <div class="form-column left-column">
+                    <h3>Red Fighter</h3>
+                    <label>Red Average Strike Landed:</label>
+                    <input type="range" name="RedAvgSigStrLanded" min="0" max="500" step="1" id="RedAvgSigStrLanded" oninput="updateValue('RedAvgSigStrLanded')">
+                    <span id="RedAvgSigStrLanded-value">0</span><br>
+                    <label>RedAvgSigStrPct:</label>
+                    <input type="range" name="RedAvgSigStrPct" min="0" max="100" step="1" id="RedAvgSigStrPct" oninput="updateValue('RedAvgSigStrPct')">
+                    <span id="RedAvgSigStrPct-value">0</span><br>
+                    <label>RedAvgTDLanded:</label>
+                    <input type="range" name="RedAvgTDLanded" min="0" max="100" step="1" id="RedAvgTDLanded" oninput="updateValue('RedAvgTDLanded')">
+                    <span id="RedAvgTDLanded-value">0</span><br>
+                    <label>RedReachCms:</label>
+                    <input type="range" name="RedReachCms" min="50" max="250" step="1" id="RedReachCms" oninput="updateValue('RedReachCms')">
+                    <span id="RedReachCms-value">50</span><br>
+                    <label>RedHeightCms:</label>
+                    <input type="range" name="RedHeightCms" min="150" max="220" step="1" id="RedHeightCms" oninput="updateValue('RedHeightCms')">
+                    <span id="RedHeightCms-value">150</span><br>
+                    <label>RedAge:</label>
+                    <input type="range" name="RedAge" min="18" max="45" step="1" id="RedAge" oninput="updateValue('RedAge')">
+                    <span id="RedAge-value">18</span><br>
+                </div>
+
+                <div class="form-column right-column">
+                    <h3>Blue Fighter</h3>
+                    <label>BlueAvgSigStrLanded:</label>
+                    <input type="range" name="BlueAvgSigStrLanded" min="0" max="500" step="1" id="BlueAvgSigStrLanded" oninput="updateValue('BlueAvgSigStrLanded')">
+                    <span id="BlueAvgSigStrLanded-value">0</span><br>
+                    <label>BlueAvgSigStrPct:</label>
+                    <input type="range" name="BlueAvgSigStrPct" min="0" max="100" step="1" id="BlueAvgSigStrPct" oninput="updateValue('BlueAvgSigStrPct')">
+                    <span id="BlueAvgSigStrPct-value">0</span><br>
+                    <label>BlueAvgTDLanded:</label>
+                    <input type="range" name="BlueAvgTDLanded" min="0" max="100" step="1" id="BlueAvgTDLanded" oninput="updateValue('BlueAvgTDLanded')">
+                    <span id="BlueAvgTDLanded-value">0</span><br>
+                    <label>BlueReachCms:</label>
+                    <input type="range" name="BlueReachCms" min="50" max="250" step="1" id="BlueReachCms" oninput="updateValue('BlueReachCms')">
+                    <span id="BlueReachCms-value">50</span><br>
+                    <label>BlueHeightCms:</label>
+                    <input type="range" name="BlueHeightCms" min="150" max="220" step="1" id="BlueHeightCms" oninput="updateValue('BlueHeightCms')">
+                    <span id="BlueHeightCms-value">150</span><br>
+                    <label>BlueAge:</label>
+                    <input type="range" name="BlueAge" min="18" max="45" step="1" id="BlueAge" oninput="updateValue('BlueAge')">
+                    <span id="BlueAge-value">18</span><br>
+                </div>
+            </div>
+            <button type="submit">Prédire</button>
+        </form>
+    </div>
+
+    <div id="result" class="result-container">
+        <!-- Les résultats de la prédiction s'afficheront ici -->
+    </div>
+
+    <script>
+        // Fonction pour mettre à jour les valeurs affichées à côté des sliders
+        function updateValue(sliderId) {
+            var value = document.getElementById(sliderId).value;
+            document.getElementById(sliderId + '-value').innerText = value;
+        }
+    </script>
+</body>
+</html>
